@@ -1,8 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "redux/auth/auth-operations";
+import {selectUsername} from "redux/auth/auth-selectors";
+
+const styles = {
+    container: {
+        display: 'flex',
+        alignItemms:'center'
+    },
+    avatar: {
+        marginRight:4,
+    },
+    name: {
+        fontWeight: 700,
+        marginRight:12,
+    },
+};
+
+
 export const UserMenu = () => {
+    const dispatch = useDispatch();
+    const name = useSelector(selectUsername);
+    
   return (
-    <div>
-      <p>mango@mail.com</p>
-      <button>Logout</button>
+    <div style={styles.container}>
+          <p style={styles.name}>Welcome, { name}</p>
+      <button type="button" onClick={()=>dispatch(logOut())}>Logout</button>
     </div>
   );
 };
