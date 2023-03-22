@@ -1,6 +1,3 @@
-// import ContactForm from './ContactForm';
-// import ContactList from './ContactList';
-// import Filter from './Filter';
 // import { Container } from './App.styled';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -11,6 +8,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { useAuth } from 'hooks';
 import { refreshhUser } from 'redux/auth/auth-operations';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const Home = lazy(() => import('../pages/Home'));
 const Login = lazy(() => import('../pages/Login'));
@@ -31,14 +30,29 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />} end>
         <Route index element={<Home />} />
-       
-          <Route path="/register" element={<Register />} />
-           <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );
+};
 
   //   return (<div
   //       style={{
@@ -62,4 +76,4 @@ export const App = () => {
   //       </Route>
   //     </Routes>
   //     </div>
-};
+
