@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "redux/auth/auth-operations";
-import {selectUsername} from "redux/auth/auth-selectors";
+import {selectUser} from "redux/auth/auth-selectors";
 
 const styles = {
     container: {
@@ -19,7 +19,7 @@ const styles = {
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
-    const name = useSelector(selectUsername);
+    const name = useSelector(selectUser);
     
   return (
     <div style={styles.container}>
