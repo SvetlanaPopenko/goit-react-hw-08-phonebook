@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useAuth } from "hooks";
+import { useDispatch} from "react-redux";
 import { logOut } from "redux/auth/auth-operations";
-import {selectUser} from "redux/auth/auth-selectors";
 
 const styles = {
     container: {
@@ -19,11 +19,11 @@ const styles = {
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
-    const name = useSelector(selectUser);
+    const {user} = useAuth();
     
   return (
     <div style={styles.container}>
-          <p style={styles.name}>Welcome, { name}</p>
+          <p style={styles.name}>Welcome, { user.name}</p>
       <button type="button" onClick={()=>dispatch(logOut())}>Logout</button>
     </div>
   );
