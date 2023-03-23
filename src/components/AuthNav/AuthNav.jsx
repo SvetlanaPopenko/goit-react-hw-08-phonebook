@@ -9,7 +9,7 @@ const styles = {
     color: '#2a363b',
   },
 
-  activeLink: {
+  activelink: {
     color: '#e84a5f',
   },
 };
@@ -21,7 +21,7 @@ export const AuthNuv = () => {
         to="/register"
         exact
         style={styles.link}
-        activeStyle={styles.activeLink}
+        activeStyle={styles.activelink}
       >
         Register
       </NavLink>
@@ -31,7 +31,7 @@ export const AuthNuv = () => {
         style={styles.link}
         activeStyle={styles.activeLink}
       >
-        Login
+        Log in
       </NavLink>
     </div>
   );
