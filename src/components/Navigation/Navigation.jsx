@@ -1,27 +1,40 @@
-import { NavLink } from "react-router-dom"
+import { useAuth } from 'hooks';
+import { NavLink } from 'react-router-dom';
 
 const styles = {
-    link: {
-  display: 'inline-block',
-  textDecoration: 'none',
-  padding: '12px',
-  fontWeight: 700,
-  color: '#2a363b',
-},
+  link: {
+    display: 'inline-block',
+    textDecoration: 'none',
+    padding: '12px',
+    fontWeight: 700,
+    color: '#2a363b',
+  },
 
-activelink:{
-  color: '#e84a5f',
-}
-
-}
+  activelink: {
+    color: '#e84a5f',
+  },
+};
 
 export const Navigation = () => {
-    return (
-        <nav>
-            <NavLink to="/" exact style={styles.link} activeStyle={styles.activelink}>Home</NavLink>
-            <NavLink to="/contacts" exact style={styles.link} activeStyle={styles.activelink}>Contacts</NavLink>
-        </nav>
-    )
-}
+  const { isLoggedIn } = useAuth();
 
-export default Navigation;
+  return (
+    <nav>
+      <NavLink to="/" exact style={styles.link} activeStyle={styles.activelink}>
+        Home
+      </NavLink>
+      {isLoggedIn && (
+        <NavLink
+          to="/contacts"
+          exact
+          style={styles.link}
+          activeStyle={styles.activelink}
+        >
+          Contacts
+        </NavLink>
+      )}
+    </nav>
+  );
+};
+
+
