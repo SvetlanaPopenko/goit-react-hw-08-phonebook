@@ -37,22 +37,22 @@ const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     if (checkContact(contacts, values)) {
       toast(`${values.name} already exists`, {
-        position: 'bottom-center',
+        position: 'top-right',
         style: {
           borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
+          background: '#fff',
+          color: '#ff0000',
         },
       });
       return;
     }
     if (checkNumber(contacts, values)) {
       toast(`${values.number} already exists`, {
-        position: 'bottom-center',
+        position: 'top-right',
         style: {
           borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
+          background: '#fff',
+          color: '#ff0000',
         },
       });
       return;
