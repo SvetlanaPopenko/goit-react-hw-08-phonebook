@@ -22,12 +22,12 @@ const schema = yup.object().shape({
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     ),
-  phone: yup.string().phone().required(),
+  number: yup.string().phone().required(),
 });
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const ContactForm = () => {
@@ -47,7 +47,8 @@ const ContactForm = () => {
       return;
     }
     if (checkNumber(contacts, values)) {
-      toast(`${values.phone} already exists`, {
+      
+      toast(`${values.number} already exists`, {
         position: 'bottom-center',
         style: {
           borderRadius: '10px',
@@ -57,7 +58,7 @@ const ContactForm = () => {
       });
       return;
     }
-
+console.log(values);
     dispatch(addContact(values));
     resetForm();
   };
@@ -74,10 +75,10 @@ const ContactForm = () => {
           <ContactInput type="text" name="name" />
           <Error name="name" component="div" />
         </ContactText>
-        <ContactText htmlFor="phone">
+        <ContactText htmlFor="number">
           Phone
-          <ContactInput type="tel" name="phone" placeholder="+380XXXXXXXXX" />
-          <Error name="phone" component="div" />
+          <ContactInput type="tel" name="number" placeholder="+380XXXXXXXXX" />
+          <Error name="number" component="div" />
         </ContactText>
         <ContactFormButton type="submit">Add contact</ContactFormButton>
       </ContactFormWrap>
