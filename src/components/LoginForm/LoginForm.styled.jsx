@@ -14,6 +14,8 @@ export const LoginText= styled.label`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  font-size: 24px;
+  color:rgb(85, 26, 139);
 `;
 
 export const LoginInput = styled(Field)`
