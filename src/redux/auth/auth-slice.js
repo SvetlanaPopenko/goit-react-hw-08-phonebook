@@ -1,10 +1,6 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { logIn, logOut, refreshhUser, register } from './auth-operations';
-
-const authExtraActions = [register, logIn, logOut, refreshhUser];
-const getAuthActions = type =>
-  authExtraActions.map(action => action[type]);
+import { logIn, logOut, refreshUser, register } from './auth-operations';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -37,24 +33,17 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         toast.success(`Bye!`);
       })
-      .addCase(refreshhUser.fulfilled, (state, action) => {
+      .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
       })
-      .addMatcher(
-        isAnyOf(...getAuthActions('pending')),
-        state => {
-          toast.loading('Loading...');
-          return state;
-        }
-      )
-      .addMatcher(
-        isAnyOf(...getAuthActions('rejected')),
-        state => {
-          toast.error('Error!');
-          return state;
-        }
-      ),
+      .addCase(refreshUser.pending, state => {
+        return state;
+      })
+      .addCase(refreshUser.rejected, state => {
+        toast.error('Error!');
+        return state;
+      }),
 });
 
 export const authReducer = authSlice.reducer;
