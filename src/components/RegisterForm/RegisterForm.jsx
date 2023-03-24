@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
 import { Formik } from 'formik';
-import { Button } from '@mui/material';
-import { RegisterFormWrap, RegisterText,RegisterInput, Error } from './RegisterForm.styled';
+import { RegisterFormWrap, RegisterText,RegisterInput, Error, RegisterButton } from './RegisterForm.styled';
 
 
 export const RegisterForm = () => {
@@ -42,7 +41,7 @@ export const RegisterForm = () => {
         Password
         <RegisterInput type="password" name="password" />
           <Error name="password" component="div" /></RegisterText>
-          <Button type='submit' variant='contained'>Register</Button>
+          <RegisterButton type='submit'>Register</RegisterButton>
     </RegisterFormWrap>
     </Formik>
   );

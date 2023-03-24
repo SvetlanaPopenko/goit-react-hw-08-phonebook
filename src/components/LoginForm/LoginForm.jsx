@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
-import { Button } from '@mui/material';
 import { Formik } from 'formik';
 import {
   LoginFormWrap,
   LoginText,
   LoginInput,
   Error,
+  LoginButton
 } from './LoginForm.styled';
 import * as yup from 'yup';
 
@@ -44,9 +44,9 @@ export const LoginForm = () => {
           <LoginInput type="password" name="password" />
           <Error name="password" component="div" />
         </LoginText>
-        <Button type="submit" variant="contained">
+        <LoginButton type="submit">
           Log In
-        </Button>
+        </LoginButton>
       </LoginFormWrap>
     </Formik>
   );
