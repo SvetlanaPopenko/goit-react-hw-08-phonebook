@@ -61,15 +61,4 @@ export const App = () => {
   //         color: '#eeedf8',
   //       }}
   //     >
-  // <AppBar/>
-  //     <Routes>
-  //       <Route path="/" element={<Layout />} end>
-  //         <Route index element={<Home />} />
-  //         <Route path="/login" element={<Login />} />
-  //         <Route path="/register" element={<Register />}/>
-  //         <Route path="/contacts" element={<Contacts />} />
-  //         <Route path="*" element={<Navigate to="/" replace />} />
-  //       </Route>
-  //     </Routes>
-  //     </div>
 
