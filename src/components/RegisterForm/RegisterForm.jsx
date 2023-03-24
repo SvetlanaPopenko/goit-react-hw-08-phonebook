@@ -1,48 +1,49 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
+import { Formik } from 'formik';
+import { Button } from '@mui/material';
+import { RegisterFormWrap, RegisterText,RegisterInput, Error } from './RegisterForm.styled';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
 
 export const RegisterForm = () => {
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+  };
+
   const dispatch = useDispatch();
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    dispatch(
+  const handleSubmit = (values, props) => {
+        dispatch(
       register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name: values.name,
+        email: values.email,
+        password: values.password,
       })
     );
-    form.reset();
+    props.resetForm();
   };
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-      <label style={styles.label}>
+    <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+      <RegisterFormWrap autoComplete='off'>
+      <RegisterText>
         UserName
-        <input type="text" name="name" />
-      </label>
-      <label style={styles.label}>
+          <RegisterInput type="text" name="name" />
+          <Error name="name" component="div" />
+      </RegisterText>
+      <RegisterText>
         Email
-        <input type="email" name="email" />
-      </label>
-      <label style={styles.label}>
+        <RegisterInput type="email" name="email" />
+          <Error name="email" component="div" />
+        </RegisterText>
+      <RegisterText>
         Password
-        <input type="password" name="password" />
-          </label>
-          <button type='submit'>Register</button>
-    </form>
+        <RegisterInput type="password" name="password" />
+          <Error name="password" component="div" /></RegisterText>
+          <Button type='submit' variant='contained'>Register</Button>
+    </RegisterFormWrap>
+    </Formik>
   );
 };

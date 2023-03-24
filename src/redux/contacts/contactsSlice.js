@@ -8,7 +8,7 @@ import {
 import { toast } from 'react-hot-toast';
 
 const extraActions = [fetchContacts, addContact, deleteContact, updateContact];
-const getActions = type => extraActions.map(action => action[type]);
+const getActions = (action,type) => extraActions.map(action => action[type]);
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -42,16 +42,16 @@ const contactsSlice = createSlice({
         );
         toast.success('Success');
       })
-      .addMatcher(isAnyOf(...getActions('pending')), state => {
+      .addMatcher(isAnyOf(...getActions(extraActions,'pending')), state => {
         state.isLoading = true;
         toast.loading('Loading...');
       })
-      .addMatcher(isAnyOf(...getActions('rejected')), (state, action) => {
+      .addMatcher(isAnyOf(...getActions(extraActions, 'rejected')), (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         toast.error('Error');
       })
-      .addMatcher(isAnyOf(...getActions('fulfilled')), state => {
+      .addMatcher(isAnyOf(...getActions(extraActions, 'fulfilled')), state => {
         state.isLoading = false;
         state.error = null;
       }),

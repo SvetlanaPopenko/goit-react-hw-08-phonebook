@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
@@ -11,7 +11,7 @@ import {
   Error,
 } from './ContactForm.styled';
 import toast from 'react-hot-toast';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import { checkContact, checkNumber } from 'components/services';
 
 const schema = yup.object().shape({

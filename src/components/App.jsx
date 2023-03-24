@@ -1,9 +1,5 @@
-// import { Container } from './App.styled';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { selectError, selectIsLoading } from 'redux/selectors';
-// import { fetchContacts } from 'redux/operations';
-// import { Toaster } from 'react-hot-toast';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { useAuth } from 'hooks';
