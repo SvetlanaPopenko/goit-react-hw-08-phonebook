@@ -6,8 +6,11 @@ export const Navigation = () => {
 
   return (
     <NavigationMenu>
-      <StyledLink to="/" end>Home</StyledLink>
-      {isLoggedIn && (<StyledLink to="/contacts">Contacts</StyledLink>)}
+      <StyledLink to="/" end>
+        Home
+      </StyledLink>
+      {isLoggedIn && (
+        <StyledLink to="/contacts">Contacts</StyledLink>)}
     </NavigationMenu>
   );
 };
