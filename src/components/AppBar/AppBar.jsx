@@ -3,9 +3,9 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useAuth } from 'hooks';
 
-
 export const AppBar = () => {
-  const {isLoggedIn} = useAuth();
+  const { isLoggedIn } = useAuth();
+  
   return (
     <header>
       <Navigation />
