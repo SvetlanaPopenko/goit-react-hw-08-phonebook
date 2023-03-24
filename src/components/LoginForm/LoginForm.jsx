@@ -22,16 +22,9 @@ const initialValues = {
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+  const handleSubmit = (values, props) => {
+    dispatch(logIn(values));
+    props.resetForm();
   };
 
   return (
