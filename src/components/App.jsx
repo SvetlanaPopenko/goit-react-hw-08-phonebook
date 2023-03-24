@@ -29,7 +29,10 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
           }
         />
         <Route
@@ -50,15 +53,14 @@ export const App = () => {
   );
 };
 
-  //   return (<div
-  //       style={{
-  //         marginTop: '50px',
-  //         display: 'flex',
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //         flexDirection: 'column',
-  //         fontSize: 40,
-  //         color: '#eeedf8',
-  //       }}
-  //     >
-
+//   return (<div
+//       style={{
+//         marginTop: '50px',
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//         flexDirection: 'column',
+//         fontSize: 40,
+//         color: '#eeedf8',
+//       }}
+//     >

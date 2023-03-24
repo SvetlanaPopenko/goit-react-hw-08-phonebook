@@ -6,7 +6,7 @@ import {
   LoginText,
   LoginInput,
   Error,
-  LoginButton
+  LoginButton,
 } from './LoginForm.styled';
 import * as yup from 'yup';
 
@@ -44,9 +44,7 @@ export const LoginForm = () => {
           <LoginInput type="password" name="password" />
           <Error name="password" component="div" />
         </LoginText>
-        <LoginButton type="submit">
-          Log In
-        </LoginButton>
+        <LoginButton type="submit">Log In</LoginButton>
       </LoginFormWrap>
     </Formik>
   );

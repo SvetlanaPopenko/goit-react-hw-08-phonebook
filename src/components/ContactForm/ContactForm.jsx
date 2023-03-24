@@ -47,7 +47,6 @@ const ContactForm = () => {
       return;
     }
     if (checkNumber(contacts, values)) {
-      
       toast(`${values.number} already exists`, {
         position: 'bottom-center',
         style: {
@@ -58,7 +57,7 @@ const ContactForm = () => {
       });
       return;
     }
-console.log(values);
+    console.log(values);
     dispatch(addContact(values));
     resetForm();
   };

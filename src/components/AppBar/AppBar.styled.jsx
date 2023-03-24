@@ -5,5 +5,5 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  border-bottom:3px solid #ffffff ;
+  border-bottom: 3px solid #ffffff;
 `;

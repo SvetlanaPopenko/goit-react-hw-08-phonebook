@@ -19,7 +19,6 @@ export const ContactItems = styled.li`
   width: 600px;
   border: 2px solid yellow;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   background: linear-gradient(160deg, #f0ade4, #d108ec);
 `;
-

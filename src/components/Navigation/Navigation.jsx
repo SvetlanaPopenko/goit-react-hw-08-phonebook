@@ -9,8 +9,7 @@ export const Navigation = () => {
       <StyledLink to="/" end>
         Home
       </StyledLink>
-      {isLoggedIn && (
-        <StyledLink to="/contacts">Contacts</StyledLink>)}
+      {isLoggedIn && <StyledLink to="/contacts">Contacts</StyledLink>}
     </NavigationMenu>
   );
 };

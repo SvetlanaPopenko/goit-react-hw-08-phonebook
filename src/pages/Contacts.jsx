@@ -18,9 +18,9 @@ const Contacts = () => {
     <>
       <Helmet>
         <title>Contacts</title>
-        </Helmet>
+      </Helmet>
       <ContactForm />
-      <Filter/>
+      <Filter />
       <div>{isLoading && 'Request in progress...'}</div>
       <ContactList />
     </>

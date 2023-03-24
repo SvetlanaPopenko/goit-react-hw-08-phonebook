@@ -1,8 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
 import { Formik } from 'formik';
-import { RegisterFormWrap, RegisterText,RegisterInput, Error, RegisterButton } from './RegisterForm.styled';
-
+import {
+  RegisterFormWrap,
+  RegisterText,
+  RegisterInput,
+  Error,
+  RegisterButton,
+} from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const initialValues = {
@@ -14,7 +19,7 @@ export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, props) => {
-        dispatch(
+    dispatch(
       register({
         name: values.name,
         email: values.email,
@@ -26,23 +31,24 @@ export const RegisterForm = () => {
 
   return (
     <Formik onSubmit={handleSubmit} initialValues={initialValues}>
-      <RegisterFormWrap autoComplete='off'>
-      <RegisterText>
-        UserName
+      <RegisterFormWrap autoComplete="off">
+        <RegisterText>
+          UserName
           <RegisterInput type="text" name="name" />
           <Error name="name" component="div" />
-      </RegisterText>
-      <RegisterText>
-        Email
-        <RegisterInput type="email" name="email" />
+        </RegisterText>
+        <RegisterText>
+          Email
+          <RegisterInput type="email" name="email" />
           <Error name="email" component="div" />
         </RegisterText>
-      <RegisterText>
-        Password
-        <RegisterInput type="password" name="password" />
-          <Error name="password" component="div" /></RegisterText>
-          <RegisterButton type='submit'>Register</RegisterButton>
-    </RegisterFormWrap>
+        <RegisterText>
+          Password
+          <RegisterInput type="password" name="password" />
+          <Error name="password" component="div" />
+        </RegisterText>
+        <RegisterButton type="submit">Register</RegisterButton>
+      </RegisterFormWrap>
     </Formik>
   );
 };

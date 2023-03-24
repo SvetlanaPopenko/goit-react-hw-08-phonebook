@@ -6,7 +6,7 @@ import { Container } from './AppBar.styled';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
-  
+
   return (
     <Container>
       <Navigation />
