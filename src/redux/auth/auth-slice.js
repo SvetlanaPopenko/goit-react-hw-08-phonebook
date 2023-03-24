@@ -1,4 +1,4 @@
-import { createSlice, isAllOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 import { logIn, logOut, refreshhUser, register } from './auth-operations';
 
@@ -42,14 +42,14 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addMatcher(
-        isAllOf(...getAuthActions(authExtraActions, 'pending')),
+        isAnyOf(...getAuthActions(authExtraActions, 'pending')),
         state => {
-          toast.loading('Loading...auth');
+          toast.loading('Loading...');
           return state;
         }
       )
       .addMatcher(
-        isAllOf(...getAuthActions(authExtraActions, 'rejected')),
+        isAnyOf(...getAuthActions(authExtraActions, 'rejected')),
         state => {
           toast.error('Error!');
           return state;
