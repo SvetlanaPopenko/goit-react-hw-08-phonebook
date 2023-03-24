@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { useAuth } from 'hooks';
-import { refreshhUser } from 'redux/auth/auth-operations';
+import { refreshUser } from 'redux/auth/auth-operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -17,7 +17,7 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshhUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (
