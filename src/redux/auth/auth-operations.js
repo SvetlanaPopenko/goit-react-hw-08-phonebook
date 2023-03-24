@@ -6,9 +6,9 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-  const clearAuthHeader=()=> {
-    axios.defaults.headers.common.Authorization = '';
-  };
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -48,13 +48,14 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshhUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (persistedToken === null) {
+    const { token } = thunkAPI.getState().auth;
+
+    if (!token) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
+    
     try {
-      setAuthHeader(persistedToken);
+      setAuthHeader(token);
       const response = await axios.get('/users/current');
       return response.data;
     } catch (error) {
