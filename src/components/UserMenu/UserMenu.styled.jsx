@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 
 export const UserContainer = styled.div`
     display: flex;
-    align-items: center;
+    align-items:center;
+    gap: 10px;
 `;
 
 export const UserText = styled.p`
+font-size: 26px;
     font-weight: 700;
     margin-right: 12px;
 `;
